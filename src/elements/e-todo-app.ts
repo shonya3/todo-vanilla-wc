@@ -22,6 +22,13 @@ export class TodoAppElement extends BaseElement {
 	#shadowRoot = this.attachShadow({ mode: 'open' });
 	#todos: Todo[] = [];
 
+	constructor() {
+		super();
+
+		this.render();
+		this.bindListeners();
+	}
+
 	set todos(val: Todo[]) {
 		this.#todos = val;
 		this.render();
@@ -58,11 +65,6 @@ export class TodoAppElement extends BaseElement {
 				return t;
 			});
 		});
-	}
-
-	connectedCallback() {
-		this.render();
-		this.bindListeners();
 	}
 }
 
